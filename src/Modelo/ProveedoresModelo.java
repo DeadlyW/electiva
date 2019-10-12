@@ -5,13 +5,14 @@
  */
 package Modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Estudiante
  */
-public class ProveedoresModelo {
+public class ProveedoresModelo implements Serializable{
 
     private String codigo;
     private String nombre;

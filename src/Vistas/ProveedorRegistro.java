@@ -288,6 +288,8 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         mt2.setTelefono(Integer.parseInt(telefonopro.getText()));
         mt2.setEstado(estadopro.getText());
         mc.agregar(mt2);
+        ProveedoresControlador.guardarProveedor();
+        
         
         limpiado();
     }//GEN-LAST:event_registroproActionPerformed
