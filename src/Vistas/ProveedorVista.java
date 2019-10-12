@@ -39,7 +39,7 @@ public class ProveedorVista extends javax.swing.JFrame {
             String[] fmj = {mt.getCodigo(), mt.getNombre(), mt.getFecha(), mt.getDireccion(), mt.getEvaluacionI() + "", mt.getReevaluacion() + "", mt.getTproveedor(), mt.getNit(), mt.getContacto(), mt.getCorreo(), mt.getTelefono() + "", mt.getEstado()};
             dtm3.addRow(fmj);
             System.out.println(fmj);
-            
+
         }
 
     }
@@ -58,6 +58,7 @@ public class ProveedorVista extends javax.swing.JFrame {
         tablaproveedores = new javax.swing.JTable();
         addproveedor = new javax.swing.JButton();
         listar = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,18 +93,27 @@ public class ProveedorVista extends javax.swing.JFrame {
             }
         });
 
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addproveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(addproveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Eliminar))
+                .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,6 +124,8 @@ public class ProveedorVista extends javax.swing.JFrame {
                         .addComponent(addproveedor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(listar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Eliminar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
                 .addContainerGap())
@@ -146,10 +158,41 @@ public class ProveedorVista extends javax.swing.JFrame {
     }//GEN-LAST:event_addproveedorActionPerformed
 
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
-            mtc.setProveedores(ProveedoresControlador.cargarProveedor());
-            llenado();
-            System.out.println(mtc.getProveedores());
+        mtc.setProveedores(ProveedoresControlador.cargarProveedor());
+        llenado();
+        System.out.println(mtc.getProveedores());
     }//GEN-LAST:event_listarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        int x = tablaproveedores.getSelectedRow();
+        dtm3 = (DefaultTableModel) tablaproveedores.getModel();
+        dtm3.removeRow(tablaproveedores.getSelectedRow());
+        
+
+        for (int i = 0; i < dtm3.getRowCount(); i++) {
+            if (dtm3.getValueAt(i, 0).toString().equals("")) {
+                System.out.println("lol");
+            } else {
+                m.setCodigo(dtm3.getValueAt(i, 0).toString());
+                m.setNombre(dtm3.getValueAt(i, 1).toString());
+                m.setFecha(dtm3.getValueAt(i, 2).toString());
+                m.setDireccion(dtm3.getValueAt(i, 3).toString());
+                m.setEvaluacionI(Integer.parseInt(dtm3.getValueAt(i, 4).toString()));
+                m.setReevaluacion(Integer.parseInt(dtm3.getValueAt(i, 5).toString()));
+                m.setTproveedor(dtm3.getValueAt(i, 6).toString());
+                m.setNit(dtm3.getValueAt(i, 7).toString());
+                m.setContacto(dtm3.getValueAt(i, 8).toString());
+                m.setCorreo(dtm3.getValueAt(i, 9).toString());
+                m.setTelefono(Integer.parseInt(dtm3.getValueAt(i, 10).toString()));
+                m.setEstado(dtm3.getValueAt(i, 11).toString());
+            }
+        }
+        
+        mtc.agregar(m);
+        ProveedoresControlador.guardarProveedor();
+
+
+    }//GEN-LAST:event_EliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +230,7 @@ public class ProveedorVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Eliminar;
     private javax.swing.JButton addproveedor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
