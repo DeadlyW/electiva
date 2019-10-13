@@ -24,24 +24,24 @@ public class ProveedorVista extends javax.swing.JFrame {
         this.setTitle("Gestionar Proveedores");
         this.setLocationRelativeTo(null);
     }
-
+    
     DefaultTableModel dtm3 = new DefaultTableModel();
-
+    
     ProveedoresControlador mtc = new ProveedoresControlador();
     ProveedoresModelo m = new ProveedoresModelo();
-
+    
     public void llenado() {
         dtm3.setNumRows(0);
-
+        
         for (int i = 0; i < mtc.getProveedores().size(); i++) {
             ProveedoresModelo mt = mtc.getProveedores().get(i);
-
+            
             String[] fmj = {mt.getCodigo(), mt.getNombre(), mt.getFecha(), mt.getDireccion(), mt.getEvaluacionI() + "", mt.getReevaluacion() + "", mt.getTproveedor(), mt.getNit(), mt.getContacto(), mt.getCorreo(), mt.getTelefono() + "", mt.getEstado()};
             dtm3.addRow(fmj);
             System.out.println(fmj);
-
+            
         }
-
+        
     }
 
     /**
@@ -168,29 +168,29 @@ public class ProveedorVista extends javax.swing.JFrame {
         dtm3 = (DefaultTableModel) tablaproveedores.getModel();
         dtm3.removeRow(tablaproveedores.getSelectedRow());
         
-
-        for (int i = 0; i < dtm3.getRowCount(); i++) {
-            if (dtm3.getValueAt(i, 0).toString().equals("")) {
+        //for (int i = 0; i < dtm3.getRowCount(); i++) {
+          //  if (dtm3.getValueAt(i, 0).toString().equals("")) {
                 System.out.println("lol");
-            } else {
-                m.setCodigo(dtm3.getValueAt(i, 0).toString());
-                m.setNombre(dtm3.getValueAt(i, 1).toString());
-                m.setFecha(dtm3.getValueAt(i, 2).toString());
-                m.setDireccion(dtm3.getValueAt(i, 3).toString());
-                m.setEvaluacionI(Integer.parseInt(dtm3.getValueAt(i, 4).toString()));
-                m.setReevaluacion(Integer.parseInt(dtm3.getValueAt(i, 5).toString()));
-                m.setTproveedor(dtm3.getValueAt(i, 6).toString());
-                m.setNit(dtm3.getValueAt(i, 7).toString());
-                m.setContacto(dtm3.getValueAt(i, 8).toString());
-                m.setCorreo(dtm3.getValueAt(i, 9).toString());
-                m.setTelefono(Integer.parseInt(dtm3.getValueAt(i, 10).toString()));
-                m.setEstado(dtm3.getValueAt(i, 11).toString());
-            }
-        }
+            //} else {
+                m.setCodigo(dtm3.getValueAt(x, 0).toString());
+                m.setNombre(dtm3.getValueAt(x, 1).toString());
+                m.setFecha(dtm3.getValueAt(x, 2).toString());
+                m.setDireccion(dtm3.getValueAt(x, 3).toString());
+                m.setEvaluacionI(Integer.parseInt(dtm3.getValueAt(x, 4).toString()));
+                m.setReevaluacion(Integer.parseInt(dtm3.getValueAt(x, 5).toString()));
+                m.setTproveedor(dtm3.getValueAt(x, 6).toString());
+                m.setNit(dtm3.getValueAt(x, 7).toString());
+                m.setContacto(dtm3.getValueAt(x, 8).toString());
+                m.setCorreo(dtm3.getValueAt(x, 9).toString());
+                m.setTelefono(Integer.parseInt(dtm3.getValueAt(x, 10).toString()));
+                m.setEstado(dtm3.getValueAt(x, 11).toString());
+            //}
+        //}
         
-        mtc.agregar(m);
+        
         ProveedoresControlador.guardarProveedor();
-
+        
+        
 
     }//GEN-LAST:event_EliminarActionPerformed
 

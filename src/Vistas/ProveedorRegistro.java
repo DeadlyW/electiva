@@ -46,7 +46,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         contactopro.setText("");
         emailpro.setText("");
         telefonopro.setText("");
-        estadopro.setText("");
+        estadopro.setSelectedItem("");
         
     }
 
@@ -83,7 +83,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         contactopro = new javax.swing.JTextField();
         emailpro = new javax.swing.JTextField();
         telefonopro = new javax.swing.JTextField();
-        estadopro = new javax.swing.JTextField();
+        estadopro = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         registropro = new javax.swing.JButton();
         volverpro = new javax.swing.JButton();
@@ -116,6 +116,8 @@ public class ProveedorRegistro extends javax.swing.JFrame {
 
         jLabel13.setText("Estado:");
 
+        estadopro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Activo", "Inactivo"}));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,7 +138,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(evaluacionpro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fechapro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,14 +153,14 @@ public class ProveedorRegistro extends javax.swing.JFrame {
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estadopro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telefonopro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailpro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contactopro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nitpro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(revaluacionpro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(telefonopro, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(emailpro, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(contactopro, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(nitpro, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(revaluacionpro, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(estadopro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,10 +212,10 @@ public class ProveedorRegistro extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(telefonopro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addComponent(estadopro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Registro Proveedores");
@@ -286,7 +288,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         mt2.setContacto(contactopro.getText());
         mt2.setCorreo(emailpro.getText());
         mt2.setTelefono(Integer.parseInt(telefonopro.getText()));
-        mt2.setEstado(estadopro.getText());
+        mt2.setEstado(estadopro.getSelectedItem().toString());
         mc.agregar(mt2);
         ProveedoresControlador.guardarProveedor();
         
@@ -334,7 +336,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField contactopro;
     private javax.swing.JTextField direccionpro;
     private javax.swing.JTextField emailpro;
-    private javax.swing.JTextField estadopro;
+    private javax.swing.JComboBox<String> estadopro;
     private javax.swing.JTextField evaluacionpro;
     private javax.swing.JTextField fechapro;
     private javax.swing.JLabel jLabel1;

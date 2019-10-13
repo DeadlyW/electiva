@@ -92,7 +92,7 @@
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" pref="14" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="evaluacionpro" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
                               <Component id="fechapro" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
@@ -110,14 +110,14 @@
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="estadopro" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="telefonopro" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="emailpro" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="contactopro" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="nitpro" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="proveedor" min="-2" pref="135" max="-2" attributes="0"/>
-                              <Component id="revaluacionpro" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="telefonopro" pref="135" max="32767" attributes="0"/>
+                              <Component id="emailpro" pref="135" max="32767" attributes="0"/>
+                              <Component id="contactopro" pref="135" max="32767" attributes="0"/>
+                              <Component id="nitpro" pref="135" max="32767" attributes="0"/>
+                              <Component id="proveedor" pref="135" max="32767" attributes="0"/>
+                              <Component id="revaluacionpro" pref="135" max="32767" attributes="0"/>
+                              <Component id="estadopro" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -186,11 +186,11 @@
                       <Component id="telefonopro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="estadopro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <Component id="estadopro" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -278,7 +278,15 @@
         </Component>
         <Component class="javax.swing.JTextField" name="telefonopro">
         </Component>
-        <Component class="javax.swing.JTextField" name="estadopro">
+        <Component class="javax.swing.JComboBox" name="estadopro">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;&quot;, &quot;Activo&quot;, &quot;Inactivo&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
