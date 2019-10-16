@@ -158,9 +158,19 @@ public class ProveedorVista extends javax.swing.JFrame {
     }//GEN-LAST:event_addproveedorActionPerformed
 
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
-        
-        llenado();
-        
+        if (tablaproveedores.getRowCount() < 0) {
+            llenado();
+        } else {
+            for (int i = 0; i < mc.getProveedores().size(); i++) {
+                ProveedoresModelo j = mc.getProveedores().peek();
+                ProveedoresModelo mt = mc.getProveedores().get(i);
+
+                String[] fmj = {mt.getCodigo(), mt.getNombre(), mt.getFecha(), mt.getDireccion(), mt.getEvaluacionI() + "", mt.getReevaluacion() + "", mt.getTproveedor(), mt.getNit(), mt.getContacto(), mt.getCorreo(), mt.getTelefono() + "", mt.getEstado()};
+                dtm3.addRow(fmj);
+                System.out.println(fmj);
+
+            }
+        }
     }//GEN-LAST:event_listarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
@@ -185,11 +195,9 @@ public class ProveedorVista extends javax.swing.JFrame {
         m.setTelefono(Integer.parseInt(dtm3.getValueAt(x, 10).toString()));
         m.setEstado(dtm3.getValueAt(x, 11).toString());
         mc.eliminar(m);
-        dtm3.removeRow(tablaproveedores.getSelectedRow());
+        dtm3.removeRow(x);
         //}
         //}
-
-        
 
 
     }//GEN-LAST:event_EliminarActionPerformed

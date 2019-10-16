@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,22 +25,21 @@ import java.util.logging.Logger;
  */
 public class ProveedoresControlador {
 
-    private static List<ProveedoresModelo> proveedores = new ArrayList();
+    private static Stack<ProveedoresModelo> proveedores = new Stack();
+    private static Stack<ProveedoresModelo> proveedores2 = new Stack();
     static FileOutputStream fout;
     static FileInputStream fin;
 
     public void agregar(ProveedoresModelo a) {
 
-        proveedores.add(a);
+        proveedores.push(a);
 
     }
 
     public static void guardarProveedor() {
         File directorio = new File("c:\\Proveedores");
         directorio.mkdir();
-        
 
-        
         ObjectOutputStream out = null;
         try {
             fout = new FileOutputStream("C:\\Proveedores\\proveedor.txt");
@@ -56,18 +56,18 @@ public class ProveedoresControlador {
             }
         }
     }
-    
-     public static List cargarProveedor(){        
+
+    public static List cargarProveedor() {
         ObjectInputStream ois = null;
-        List provee=new ArrayList();
+        List provee = new ArrayList();
         try {
-            fin= new FileInputStream("C:\\Proveedores\\proveedor.txt");  
+            fin = new FileInputStream("C:\\Proveedores\\proveedor.txt");
             ois = new ObjectInputStream(fin);
             try {
-                provee = (List)ois.readObject();
+                provee = (List) ois.readObject();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ProveedoresControlador.class.getName()).log(Level.SEVERE, null, ex);
-            }            
+            }
         } catch (IOException ex) {
             Logger.getLogger(ProveedoresControlador.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -76,7 +76,8 @@ public class ProveedoresControlador {
             } catch (IOException ex) {
                 Logger.getLogger(ProveedoresControlador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }return provee;
+        }
+        return provee;
     }
 
     public void eliminar(ProveedoresModelo a) {
@@ -88,15 +89,29 @@ public class ProveedoresControlador {
     /**
      * @return the proveedores
      */
-    public List<ProveedoresModelo> getProveedores() {
+    public Stack<ProveedoresModelo> getProveedores() {
         return proveedores;
     }
 
     /**
      * @param proveedores the proveedores to set
      */
-    public void setProveedores(List<ProveedoresModelo> proveedores) {
+    public void setProveedores(Stack<ProveedoresModelo> proveedores) {
         this.proveedores = proveedores;
+    }
+
+    /**
+     * @return the proveedores2
+     */
+    public static Stack<ProveedoresModelo> getProveedores2() {
+        return proveedores2;
+    }
+
+    /**
+     * @param aProveedores2 the proveedores2 to set
+     */
+    public static void setProveedores2(Stack<ProveedoresModelo> aProveedores2) {
+        proveedores2 = aProveedores2;
     }
 
 }
