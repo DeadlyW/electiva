@@ -25,6 +25,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     ProveedoresModelo mt2 = new ProveedoresModelo();
+    ProveedoresControlador mc = new ProveedoresControlador();
     
     public void fecha() {
         
@@ -276,7 +277,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_volverproActionPerformed
 
     private void registroproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroproActionPerformed
-        ProveedoresControlador mc = new ProveedoresControlador();
+       
         mt2.setCodigo(codigopro.getText());
         mt2.setNombre(nombrepro.getText());
         mt2.setFecha(fechapro.getText());
@@ -290,7 +291,7 @@ public class ProveedorRegistro extends javax.swing.JFrame {
         mt2.setTelefono(Integer.parseInt(telefonopro.getText()));
         mt2.setEstado(estadopro.getSelectedItem().toString());
         mc.agregar(mt2);
-        ProveedoresControlador.guardarProveedor();
+       // ProveedoresControlador.guardarProveedor();
         
         
         limpiado();
